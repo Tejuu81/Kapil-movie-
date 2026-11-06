@@ -16,51 +16,55 @@
 
 <body>
 
-<!-- CINEMATIC PASSWORD PAGE -->
-<div id="passwordScreen" class="password-screen">
+<!-- FIRST SURPRISE: THE ONE-DAY QUESTION -->
+<div id="invitationScreen" class="invitation-screen">
+    <div class="invitation-orbit orbit-a"></div>
+    <div class="invitation-orbit orbit-b"></div>
+    <div class="invitation-sparkles" aria-hidden="true">✦　♡　✧　♥　✦</div>
 
-    <div class="password-hearts">
-        <span>♥</span>
-        <span>♡</span>
-        <span>♥</span>
-        <span>♡</span>
-        <span>♥</span>
+    <section class="invitation-card" id="invitationCard">
+        <div class="invitation-kicker">A LITTLE QUESTION FROM MY HEART</div>
+        <div class="invitation-emblem">♡</div>
+        <h1 class="invitation-title">Will you spend<br><span>one day with me?</span></h1>
+        <p class="invitation-copy">Just you, me, and a day full of little memories.<br>So… what do you say? ✨</p>
+
+        <div class="invitation-actions" id="invitationActions">
+            <button type="button" class="invitation-yes" id="yesBtn">YES, OF COURSE ♥</button>
+            <button type="button" class="invitation-no" id="noBtn">NO</button>
+        </div>
+        <p class="invitation-footnote">Choose carefully… one button is a little shy. ♡</p>
+    </section>
+</div>
+
+<!-- SECOND SURPRISE: YES CONFIRMATION -->
+<div id="yesConfirmation" class="yes-confirmation is-hidden" aria-hidden="true">
+    <div class="confirmation-card">
+        <div class="confirmation-stamp">✦ REALLY?! ✦</div>
+        <div class="confirmation-heart">♥</div>
+        <p class="confirmation-kicker">WAIT A SECOND…</p>
+        <h2>YOU ACTUALLY<br><span>SAID YES?!</span></h2>
+        <p>That just made my whole day. Now let’s make our little plan real. ♡</p>
+        <button type="button" class="confirmation-button" id="okayBtn">OKKK OKKKK ♥</button>
     </div>
+</div>
 
+<!-- PASSWORD PAGE: OPENS AFTER OKKK OKKKK -->
+<div id="passwordScreen" class="password-screen is-locked">
+    <div class="password-hearts">
+        <span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span>
+    </div>
     <div class="password-card">
-
         <div class="password-heart">♥</div>
-
-        <p class="password-small-title">A LITTLE SURPRISE FOR YOU</p>
-
-        <h1>आहो ❤️</h1>
-
-        <p class="password-message">
-            तुमच्यासाठी एक खास सरप्राईज आहे! 💌
-        </p>
-
-        <p class="password-hint">
-            आमचा सिक्रेट पासवर्ड टाका 🔐
-        </p>
-
+        <p class="password-small-title">THE NEXT LITTLE SECRET</p>
+        <h1>Enter the password</h1>
+        <p class="password-message">One more tiny step before our special day. 💌</p>
+        <p class="password-hint">चल, टाक आपला love password 🔐</p>
         <form id="passwordForm">
-            <input
-                type="password"
-                id="secretPassword"
-                placeholder="पासवर्ड टाका..."
-                autocomplete="off"
-                required
-            >
-
-            <button type="submit" class="unlock-button">
-                Unlock My Heart ♥
-            </button>
+            <input type="password" id="secretPassword" placeholder="Enter our love password…" autocomplete="off" required>
+            <button type="submit" class="unlock-button">Unlock Our Day ♥</button>
         </form>
-
         <p id="passwordError" class="password-error" aria-live="polite"></p>
-
         <div class="password-footer">MADE WITH LOVE ♥</div>
-
     </div>
 </div>
 
