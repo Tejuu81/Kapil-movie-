@@ -654,6 +654,58 @@ window.addEventListener("beforeunload", () => {
 });
 
 
+// ONE-DAY INVITATION FLOW — shown before the password screen.
+(function () {
+    const invitationScreen = document.getElementById("invitationScreen");
+    const confirmationScreen = document.getElementById("yesConfirmation");
+    const actions = document.getElementById("invitationActions");
+    const noButton = document.getElementById("noBtn");
+    const yesButton = document.getElementById("yesBtn");
+    const okayButton = document.getElementById("okayBtn");
+    const passwordScreen = document.getElementById("passwordScreen");
+
+    if (!invitationScreen || !confirmationScreen || !actions || !noButton || !yesButton || !okayButton || !passwordScreen) {
+        console.error("Invitation screen elements are missing from index.html");
+        return;
+    }
+
+    function moveNoButton() {
+        const area = actions.getBoundingClientRect();
+        const button = noButton.getBoundingClientRect();
+        const maxX = Math.max(0, area.width - button.width);
+        const maxY = Math.max(0, area.height - button.height);
+
+        noButton.style.position = "absolute";
+        noButton.style.left = `${Math.random() * maxX}px`;
+        noButton.style.top = `${Math.random() * maxY}px`;
+        noButton.style.zIndex = "5";
+    }
+
+    noButton.addEventListener("pointerenter", moveNoButton);
+    noButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        moveNoButton();
+    });
+    noButton.addEventListener("touchstart", function (event) {
+        event.preventDefault();
+        moveNoButton();
+    }, { passive: false });
+
+    yesButton.addEventListener("click", function () {
+        invitationScreen.classList.add("is-hidden");
+        confirmationScreen.classList.remove("is-hidden");
+        confirmationScreen.setAttribute("aria-hidden", "false");
+    });
+
+    okayButton.addEventListener("click", function () {
+        confirmationScreen.classList.add("is-hidden");
+        confirmationScreen.setAttribute("aria-hidden", "true");
+        passwordScreen.classList.remove("is-locked");
+        const passwordInput = document.getElementById("secretPassword");
+        if (passwordInput) passwordInput.focus({ preventScroll: true });
+    });
+})();
+
 // CINEMATIC PASSWORD UNLOCK
 (function () {
     function setupPassword() {
